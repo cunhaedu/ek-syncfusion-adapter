@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 import { IFileManagerFile } from '@modules/fileManager/interfaces/IFileManager';
 import { IDoctecDirectoryDTO } from '../dtos/IDoctecDirectoryDTO';
 
@@ -7,13 +9,15 @@ export function doctecDirectoryMapper(
   return {
     hasChild: directory.hasChildren,
     caseSensitive: true,
-    dateCreated: directory.createdAt,
-    dateModified: directory.updatedAt,
+    dateModified: format(new Date(directory.updatedAt), 'dd/MM/yyyy'),
     id: directory.id,
     name: directory.description,
     filterPath: directory.id,
     filterId: directory.id,
     isFile: false,
+    size: 0,
     type: '',
+    code: '',
+    status: '',
   } as IFileManagerFile;
 }

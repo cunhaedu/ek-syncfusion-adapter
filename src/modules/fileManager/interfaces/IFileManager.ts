@@ -1,7 +1,7 @@
 export interface IFileManagerFile {
   caseSensitive: boolean;
-  dateCreated: Date;
-  dateModified: Date;
+  dateCreated: string;
+  dateModified: string;
   filterId: number | string;
   filterPath: string | number;
   hasChild: boolean;
@@ -14,6 +14,8 @@ export interface IFileManagerFile {
   showHiddenItems: boolean;
   size: number;
   type: 'folder' | string;
+  code: string;
+  status: string;
 }
 
 // eslint-disable-next-line no-shadow

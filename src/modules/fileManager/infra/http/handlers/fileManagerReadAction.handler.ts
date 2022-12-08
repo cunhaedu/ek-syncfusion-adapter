@@ -45,15 +45,15 @@ export default async function fileManagerReadActionHandler(
 
   const path = body.path.replace('null', '');
 
-  if (path === '/documents/') {
+  if (path === '/documents/' || path === '/GED/') {
     return listGEDDirectoriesRootsHandler(token);
   }
 
-  if (path === '/assets/') {
+  if (path === '/assets/' || path === '/Ativos/') {
     return listAssetDirectoriesRootsHandler(token);
   }
 
-  if (path === '/providers/') {
+  if (path === '/providers/' || path === '/Fornecedores/') {
     return listProviderDirectoriesRootsHandler(token);
   }
 
@@ -64,6 +64,15 @@ export default async function fileManagerReadActionHandler(
 
   if (filterId && parseInt(filterId, 10) > 0) {
     return listDirectoriesChildrenHandler(Number(filterId), token);
+  }
+
+  if (
+    body.data &&
+    body.data.length &&
+    body.data[0].id &&
+    parseInt(body.data[0].id, 10) > 0
+  ) {
+    return listDirectoriesChildrenHandler(Number(body.data[0].id), token);
   }
 
   return {};

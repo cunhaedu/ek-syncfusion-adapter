@@ -1,3 +1,5 @@
+import { IDoctecFileDTO } from './IDoctecFileDTO';
+
 // eslint-disable-next-line no-shadow
 export enum DoctecRelationTypeEnum {
   DIRECTORY = 1,
@@ -18,4 +20,5 @@ export interface IDoctecDirectoryDTO {
   isPublic: boolean;
   hasChildren: boolean;
   relationType: IDoctecRelationTypeDTO;
+  files: IDoctecFileDTO[];
 }

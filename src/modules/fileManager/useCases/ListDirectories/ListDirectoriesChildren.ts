@@ -2,6 +2,7 @@ import { IFileManagerDirectoryResponse } from '@modules/fileManager/interfaces/I
 import { doctecDirectoryMapper } from 'adapters/doctec/mappers/doctecDirectoryMapper';
 import { IDoctecDirectoryDTO } from 'adapters/doctec/dtos/IDoctecDirectoryDTO';
 import { doctecApi } from '@shared/services/doctec/api';
+import { doctecFileMapper } from 'adapters/doctec/mappers/doctecFileMapper';
 
 export class ListDirectoriesChildren {
   async execute(
@@ -18,11 +19,17 @@ export class ListDirectoriesChildren {
       token,
     );
 
+    const directories = doctecDirectories.map(directory =>
+      doctecDirectoryMapper(directory),
+    );
+
+    const parentFiles = parentDirectory.files.map(file =>
+      doctecFileMapper(file, parentDirectory.id),
+    );
+
     return {
       cwd: doctecDirectoryMapper(parentDirectory),
-      files: doctecDirectories.map(directory => {
-        return doctecDirectoryMapper(directory);
-      }),
+      files: [...directories, ...parentFiles],
     };
   }
 

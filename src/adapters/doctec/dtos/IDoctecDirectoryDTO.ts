@@ -12,6 +12,15 @@ export interface IDoctecRelationTypeDTO {
   description: string;
 }
 
+export interface IDirectoryUserPermissions {
+  canCreateDirectoryChild: boolean;
+  canMove: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
+  canCreateDocument: boolean;
+  canRequestFile: boolean;
+}
+
 export interface IDoctecDirectoryDTO {
   createdAt: Date;
   updatedAt: Date;
@@ -21,4 +30,5 @@ export interface IDoctecDirectoryDTO {
   hasChildren: boolean;
   relationType: IDoctecRelationTypeDTO;
   files: IDoctecFileDTO[];
+  permissions: IDirectoryUserPermissions;
 }

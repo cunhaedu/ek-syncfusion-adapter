@@ -36,5 +36,6 @@ export function doctecFileMapper(
     parentId,
     code: file.fileCode,
     status: retrieveFileStatusDescription(file.status.id),
+    permissions: file.permissions,
   } as IFileManagerFile;
 }

@@ -24,6 +24,14 @@ export class ListProviderDirectoriesRoots {
         filterId: 'providers',
         filterPath: 'providers',
         id: 'providers',
+        permissions: {
+          canCreateDirectoryChild: true,
+          canMove: false,
+          canEdit: false,
+          canDelete: false,
+          canCreateDocument: true,
+          canRequestFile: true,
+        },
       } as IFileManagerFile,
       files: doctecDirectories.map(directory => {
         return doctecDirectoryMapper(directory);

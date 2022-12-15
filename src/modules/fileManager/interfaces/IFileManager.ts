@@ -1,3 +1,22 @@
+export interface IFileManagerFilePermissions {
+  canMove: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
+  canReviewDocument: boolean;
+  canRelateDocuments: boolean;
+  canSendFile: boolean;
+  canRequestPublication: boolean;
+}
+
+export interface IFileManagerDirectoryPermissions {
+  canCreateDirectoryChild: boolean;
+  canMove: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
+  canCreateDocument: boolean;
+  canRequestFile: boolean;
+}
+
 export interface IFileManagerFile {
   caseSensitive: boolean;
   dateCreated: string;
@@ -16,6 +35,7 @@ export interface IFileManagerFile {
   type: 'folder' | string;
   code: string;
   status: string;
+  permissions: IFileManagerDirectoryPermissions | IFileManagerFilePermissions;
 }
 
 // eslint-disable-next-line no-shadow
@@ -31,5 +51,5 @@ export interface IFileManagerDirectoryResponse {
 export interface IFileManagerRequest {
   action: FileManagerActionEnum;
   path: string;
-  data: any;
+  data: IFileManagerFile[];
 }

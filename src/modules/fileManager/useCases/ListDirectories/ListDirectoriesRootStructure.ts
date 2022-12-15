@@ -20,9 +20,14 @@ export class ListDirectoriesRootStructure {
         isFile: false,
         type: '',
         caseSensitive: false,
-        // permissions: {
-        //   create: false,
-        // },
+        permissions: {
+          canCreateDirectoryChild: false,
+          canMove: false,
+          canEdit: false,
+          canDelete: false,
+          canCreateDocument: false,
+          canRequestFile: false,
+        },
       } as IFileManagerFile,
       files: [
         {
@@ -42,6 +47,14 @@ export class ListDirectoriesRootStructure {
               doctecDirectories,
               DoctecRelationTypeEnum.DIRECTORY,
             ).length > 0,
+          permissions: {
+            canCreateDirectoryChild: true,
+            canMove: false,
+            canEdit: false,
+            canDelete: false,
+            canCreateDocument: true,
+            canRequestFile: true,
+          },
         } as IFileManagerFile,
         {
           name: 'Fornecedores',
@@ -60,6 +73,14 @@ export class ListDirectoriesRootStructure {
               doctecDirectories,
               DoctecRelationTypeEnum.PROVIDER,
             ).length > 0,
+          permissions: {
+            canCreateDirectoryChild: true,
+            canMove: false,
+            canEdit: false,
+            canDelete: false,
+            canCreateDocument: true,
+            canRequestFile: true,
+          },
         } as IFileManagerFile,
         {
           name: 'Ativos',
@@ -78,6 +99,14 @@ export class ListDirectoriesRootStructure {
               doctecDirectories,
               DoctecRelationTypeEnum.ASSET,
             ).length > 0,
+          permissions: {
+            canCreateDirectoryChild: true,
+            canMove: false,
+            canEdit: false,
+            canDelete: false,
+            canCreateDocument: true,
+            canRequestFile: true,
+          },
         } as IFileManagerFile,
       ],
     };

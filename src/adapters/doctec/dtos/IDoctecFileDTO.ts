@@ -19,6 +19,16 @@ export interface IDoctecFileVersionDTO {
   fileType: string | null;
 }
 
+export interface IFileUserPermissions {
+  canMove: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
+  canReviewDocument: boolean;
+  canRelateDocuments: boolean;
+  canSendFile: boolean;
+  canRequestPublication: boolean;
+}
+
 export interface IDoctecFileDTO {
   createdAt: Date;
   updatedAt: Date;
@@ -29,4 +39,5 @@ export interface IDoctecFileDTO {
   status: IDoctecFileStatusDTO;
   fileCode: string;
   currentVersion: IDoctecFileVersionDTO;
+  permissions: IFileUserPermissions;
 }

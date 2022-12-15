@@ -24,6 +24,14 @@ export class ListAssetDirectoriesRoots {
         filterId: 'assets',
         filterPath: 'assets',
         id: 'assets',
+        permissions: {
+          canCreateDirectoryChild: true,
+          canMove: false,
+          canEdit: false,
+          canDelete: false,
+          canCreateDocument: true,
+          canRequestFile: true,
+        },
       } as IFileManagerFile,
       files: doctecDirectories.map(directory => {
         return doctecDirectoryMapper(directory);

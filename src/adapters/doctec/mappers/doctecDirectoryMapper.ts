@@ -19,5 +19,6 @@ export function doctecDirectoryMapper(
     type: '',
     code: '',
     status: '',
+    permissions: directory.permissions,
   } as IFileManagerFile;
 }

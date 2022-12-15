@@ -1,23 +1,18 @@
 import { IFileManagerDirectoryResponse } from '@modules/fileManager/interfaces/IFileManager';
 import { doctecDirectoryMapper } from 'adapters/doctec/mappers/doctecDirectoryMapper';
 import { IDoctecDirectoryDTO } from 'adapters/doctec/dtos/IDoctecDirectoryDTO';
-import { doctecApi } from '@shared/services/doctec/api';
 import { doctecFileMapper } from 'adapters/doctec/mappers/doctecFileMapper';
+import { doctecApi } from '@shared/services/doctec/api';
 
 export class ListDirectoriesChildren {
   async execute(
     parentId: number,
     token: string,
   ): Promise<IFileManagerDirectoryResponse> {
-    const doctecDirectories = await this.retrieveDoctecDirectoriesChildren(
-      parentId,
-      token,
-    );
-
-    const parentDirectory = await this.retrieveParentDoctecDirectory(
-      parentId,
-      token,
-    );
+    const [doctecDirectories, parentDirectory] = await Promise.all([
+      this.retrieveDoctecDirectoriesChildren(parentId, token),
+      this.retrieveParentDoctecDirectory(parentId, token),
+    ]);
 
     const directories = doctecDirectories.map(directory =>
       doctecDirectoryMapper(directory),

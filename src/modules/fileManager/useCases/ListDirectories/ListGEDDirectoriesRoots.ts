@@ -24,6 +24,14 @@ export class ListGEDDirectoriesRoots {
         filterId: 'ged',
         filterPath: 'ged',
         id: 'documents',
+        permissions: {
+          canCreateDirectoryChild: true,
+          canMove: false,
+          canEdit: false,
+          canDelete: false,
+          canCreateDocument: false,
+          canRequestFile: false,
+        },
       } as IFileManagerFile,
       files: doctecDirectories.map(directory => {
         return doctecDirectoryMapper(directory);
